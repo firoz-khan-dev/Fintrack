@@ -247,7 +247,7 @@ function ForgotPassword() {
           {/* STEP 1 */}
           {step === 1 && (
             <form onSubmit={handleSendOtp}>
-              <fieldset className="relative border border-green-500 rounded-lg px-4 pt-1 pb-2">
+              <fieldset className="relative border border-green-500 rounded-lg px-4 pt-1 pb-2 ">
                 <legend className="px-2 text-sm font-medium text-white/80">
                   Email
                 </legend>

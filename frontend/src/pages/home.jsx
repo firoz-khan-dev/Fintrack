@@ -34,7 +34,7 @@ function Home() {
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center sm:gap-5 lg:justify-start">
               <button
                 onClick={() => navigate("/register")}
-                className="flex cursor-pointer items-center justify-center gap-3 rounded-xl border-y-3 border-red-500 px-7 py-3 font-semibold text-white shadow-2xl shadow-black/90 transition hover:bg-red-500 hover:text-black active:bg-red-500"
+                className="flex cursor-pointer items-center justify-center gap-3 rounded-xl border-y-2 border-red-500 px-7 py-3 font-semibold text-white shadow-2xl shadow-black/90 transition hover:bg-red-500 hover:text-black active:bg-red-500"
               >
                 Get Started
                 <FaArrowRight />
@@ -42,8 +42,7 @@ function Home() {
 
               <button
                 onClick={() => navigate("/dashboard")}
-                className="cursor-pointer rounded-2xl border-y-3 border-white px-7 py-3 font-semibold text-white shadow-xl shadow-black/90 transition hover:bg-white hover:text-black active:bg-white active:text-black"
-              >
+                className="cursor-pointer rounded-2xl border-y-2 border-red-500 px-7 py-3 font-semibold text-gray-900 shadow-xl shadow-black/10 transition hover:bg-red-500 hover:text-white active:bg-red-500 active:text-white dark:border-white dark:text-white dark:shadow-black/90 dark:hover:bg-white dark:hover:text-black dark:active:bg-white dark:active:text-black">
                 View Dashboard
               </button>
             </div>
@@ -64,10 +63,10 @@ function Home() {
               <div className="w-full cursor-pointer rounded-3xl border-y-2 border-red-500 bg-[#161619] p-4 shadow-2xl shadow-green-500/10 sm:p-6 lg:min-h-100">
                 <div className="flex items-center justify-between gap-3">
                   <div>
-                    <p className="text-lg text-gray-300 sm:text-[20px]">
+                    <p className="text-lg text-gray-300 sm:text-[20px] light-keep-white ">
                       Total Balance
                     </p>
-                    <h2 className="mt-2 text-3xl font-bold sm:text-4xl">
+                    <h2 className="mt-2 text-3xl font-bold sm:text-4xl light-keep-white">
                       ₹52,450
                     </h2>
                   </div>
@@ -80,14 +79,14 @@ function Home() {
                 {/* Income / Expenses */}
                 <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-4">
                   <div className="rounded-xl border border-white/10 bg-black/60 p-3 sm:p-4">
-                    <p className="text-sm text-gray-300">Income</p>
+                    <p className="text-sm text-gray-300 light-keep-white">Income</p>
                     <p className="mt-2 text-lg font-semibold text-green-500 sm:text-2xl">
                       ₹75,000
                     </p>
                   </div>
 
                   <div className="rounded-xl border border-white/10 bg-black/60 p-3 sm:p-4">
-                    <p className="text-sm text-gray-300">Expenses</p>
+                    <p className="text-sm text-gray-300 light-keep-white">Expenses</p>
                     <p className="mt-2 text-lg font-semibold text-red-400 sm:text-2xl">
                       ₹22,550
                     </p>
@@ -149,10 +148,10 @@ function Home() {
             <div className="flex size-14 items-center justify-center rounded-xl bg-green-500/10">
               <MdAddChart className="size-10 text-green-500" />
             </div>
-            <h3 className="mt-3 text-xl font-semibold sm:text-[22px]">
+            <h3 className="mt-3 text-xl font-semibold sm:text-[22px] light-keep-white">
               Easy Tracking
             </h3>
-            <p className="mt-3 leading-6 text-gray-300">
+            <p className="mt-3 leading-6 text-gray-300 light-keep-fade">
               Add your income and expenses quickly and keep your financial
               records organized.
             </p>
@@ -162,10 +161,10 @@ function Home() {
             <div className="flex size-14 items-center justify-center rounded-xl bg-green-500/10">
               <FaChartPie className="size-10 text-green-500" />
             </div>
-            <h3 className="mt-3 text-xl font-semibold sm:text-[22px]">
+            <h3 className="mt-3 text-xl font-semibold sm:text-[22px] light-keep-white">
               Understand Your Spending
             </h3>
-            <p className="mt-3 leading-6 text-gray-300">
+            <p className="mt-3 leading-6 text-gray-300 light-keep-fade">
               View your financial activity and understand where your money is
               being spent.
             </p>
@@ -175,10 +174,10 @@ function Home() {
             <div className="flex size-14 items-center justify-center rounded-xl bg-green-500/10">
               <FaShieldHalved className="size-10 text-green-500" />
             </div>
-            <h3 className="mt-3 text-xl font-semibold sm:text-[22px]">
+            <h3 className="mt-3 text-xl font-semibold sm:text-[22px] light-keep-white">
               Simple & Secure
             </h3>
-            <p className="mt-3 leading-6 text-gray-300">
+            <p className="mt-3 leading-6 text-gray-300 light-keep-fade">
               Keep your financial information organized with a simple and secure
               experience.
             </p>
@@ -189,17 +188,17 @@ function Home() {
       {/*  HOW IT WORKS  */}
       <section className="bg-[#111113] py-16 md:py-24">
         <div className="px-4 text-center">
-          <p className="text-3xl font-bold sm:text-5xl">
+          <p className="text-3xl font-bold sm:text-5xl light-keep-white">
             HOW IT <span className="text-green-500">WORKS</span>
           </p>
 
-          <h2 className="mt-3 text-2xl font-bold sm:text-4xl">
+          <h2 className="mt-3 text-2xl font-bold sm:text-4xl light-keep-white">
             Manage Your Expenses
             <span className="text-green-500"> In 3 Steps</span>
           </h2>
         </div>
 
-        <div className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-10 px-4 sm:px-8 md:mt-14 md:grid-cols-3">
+        <div className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-10 px-4 sm:px-8 md:mt-14 md:grid-cols-3 light-keep-white">
           {[
             [
               "1",
@@ -218,11 +217,11 @@ function Home() {
             ],
           ].map(([num, title, text]) => (
             <div key={num} className="text-center">
-              <div className="mx-auto flex size-16 items-center justify-center rounded-full border-y-3 border-green-500 text-2xl font-bold text-white">
+              <div className="mx-auto flex size-16 items-center justify-center rounded-full border-y-3 border-green-500 text-2xl font-bold text-white light-keep-white">
                 {num}
               </div>
-              <h3 className="mt-5 text-xl font-semibold">{title}</h3>
-              <p className="mx-auto mt-3 max-w-xs leading-6 text-gray-300 md:max-w-none">
+              <h3 className="mt-5 text-xl font-semibold ">{title}</h3>
+              <p className="mx-auto mt-3 max-w-xs leading-6 text-gray-300 md:max-w-none light-keep-fade">
                 {text}
               </p>
             </div>
@@ -232,7 +231,7 @@ function Home() {
 
       {/*  CTA  */}
       <section className="bg-black px-4 py-16 sm:px-6 md:py-24">
-        <div className="mx-auto max-w-5xl rounded-3xl border-y-2 border-green-500/80 bg-[linear-gradient(135deg,_#101012,_#1f1f23)] px-5 py-10 text-center shadow-2xl shadow-green-500/5 sm:px-10 sm:py-16">
+        <div className="mx-auto max-w-5xl rounded-3xl border-y-2 border-green-500/80 bg-[linear-gradient(135deg,_#101012,_#1f1f23)] px-5 py-10 text-center shadow-lg shadow-gray-900/15 dark:shadow-2xl dark:shadow-green-500/5">
           <h2 className="text-2xl font-bold sm:text-4xl">
             Ready to Take Control of
             <span className="text-green-500"> Your Money?</span>
@@ -256,7 +255,7 @@ function Home() {
       <footer className="border-t border-white/10 bg-[#0a0a0a] py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 text-center sm:flex-row sm:justify-between sm:px-8 sm:text-left">
           <div>
-            <h2 className="text-2xl font-bold">
+            <h2 className="text-2xl font-bold light-keep-fade">
               <span className="text-green-500">Fin</span>Track
             </h2>
             <p className="mt-1 text-sm text-gray-500">

@@ -11,7 +11,7 @@ export default function ThemeToggle() {
       className="fixed bottom-5 right-5 z-[9999] flex h-12 w-12
         items-center justify-center rounded-full border border-gray-300
         bg-white text-gray-900 shadow-xl transition hover:scale-110
-        dark:border-gray-600 dark:bg-[#202023] dark:text-yellow-300"
+        dark:border-gray-600 dark:bg-[#202023] dark:text-yellow-300 cursor-pointer"
       aria-label="Toggle theme"
       title={theme === "dark" ? "Light Mode" : "Dark Mode"}
     >

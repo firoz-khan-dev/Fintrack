@@ -1,5 +1,6 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Img from "../assets/logo.png";
+import FinTrackLogo from "./FinTrackLogo";
 import { useState } from "react";
 import ClickSound from "../assets/click.mp3";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +8,6 @@ import { logout } from "../redux/authSlice";
 import profile from "../assets/profile.png";
 import api from "../services/api";
 import { FaBars, FaTimes } from "react-icons/fa";
-
 
 const links = [
   { to: "/", label: "Home" },
@@ -58,7 +58,7 @@ function Navbar() {
       }}
       className="mr-1 flex cursor-pointer items-center text-xs text-white sm:mr-2 sm:text-base"
     >
-      <span className="rounded-full border-y-2 border-red-600 px-2 py-1 font-medium hover:bg-white/5 hover:text-white/90 sm:px-4 sm:py-2">
+      <span className="rounded-full border-y-2 border-red-600 px-2 py-1 font-medium hover:bg-white/5 hover:text-black dark:hover:text-white/90 sm:px-4 sm:py-2">
         Logout
       </span>
     </button>
@@ -73,21 +73,16 @@ function Navbar() {
     </span>
   );
 
-
-
   return (
     <header className="fixed left-0 top-0 z-40 w-full border-2 border-green-600 bg-black">
       {/* BAR: fixed 60px total height (matches pt-15 / top-15 on the pages) */}
       <div className="flex h-14 items-center justify-between gap-2 px-2 sm:px-4">
         {/* LEFT: logo + user (user shows from lg, same as original) */}
         <div className="flex min-w-0 items-center gap-6">
-          <img
-            src={Img}
-            alt="logo"
+          <FinTrackLogo
             onClick={() => navigate("/")}
-            className="h-9 cursor-pointer sm:h-13"
+            className="h-9 cursor-pointer text-white sm:h-13"
           />
-
           {isAuthenticated && (
             <div className="hidden lg:block">{userBadge}</div>
           )}
@@ -118,11 +113,17 @@ function Navbar() {
               }`}
             >
               <Link to="/register">
-                <span className="inline-block hover:scale-105">Register</span>
+                <span className="inline-block font-semibold hover:scale-105">
+                  Register
+                </span>
               </Link>
+
               <span>/</span>
+
               <Link to="/login">
-                <span className="inline-block hover:scale-105">Login</span>
+                <span className="inline-block font-semibold hover:scale-105">
+                  Login
+                </span>
               </Link>
             </div>
           )}

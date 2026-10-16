@@ -215,7 +215,7 @@ useEffect(() => {
     <div className="min-h-screen lg:h-screen lg:overflow-hidden grid grid-cols-1 lg:grid-cols-2 bg-black/90 select-none">
       {/*FORM SIDE*/}
       <div className="flex items-center justify-center px-4 py-10 sm:px-6 lg:py-0 lg:pt-13">
-        <div className="w-full max-w-md p-5 sm:p-8 flex flex-col justify-center border-red-500 border-y rounded-2xl shadow-2xl shadow-black">
+        <div className="w-full max-w-md p-5 sm:p-8 flex flex-col justify-center border-red-500 border-y rounded-2xl shadow-2xl shadow-black dark:shadow-white/10">
           {/* Heading */}
           <h1 className="text-3xl sm:text-4xl font-semibold text-center text-green-400">
             Create Account

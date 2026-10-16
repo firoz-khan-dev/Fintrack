@@ -205,14 +205,15 @@ function AddTransaction() {
           More
         </p>
 
-        <p className="max-w-xl text-base sm:text-xl">
-          <span className="text-3xl sm:text-4xl font-semibold">Log</span> an
-          expense or income entry below — it updates your balance right away and
-          stays saved on this device. Pick a category so your spending is easy
-          to review later. Switch between Expense and Income before filling in
-          the amount.
+        <p className="max-w-xl text-base sm:text-xl text-gray-800 dark:text-gray-800">
+          <span className="text-3xl sm:text-4xl font-semibold text-black dark:text-black/80">
+            Log
+          </span>{" "}
+          an expense or income entry below — it updates your balance right away
+          and stays saved on this device. Pick a category so your spending is
+          easy to review later. Switch between Expense and Income before filling
+          in the amount.
         </p>
-
         <img
           src={Card}
           alt=""

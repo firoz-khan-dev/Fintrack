@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { FiMessageCircle } from "react-icons/fi";
 import { MdOutlineMarkEmailUnread } from "react-icons/md";
 import { IoCall } from "react-icons/io5";
@@ -99,7 +98,6 @@ function Field({ label, children }) {
 }
 
 function Contact() {
-  const navigate = useNavigate();
   const formRef = useRef(null);
 
   const [name, setName] = useState("");
@@ -148,7 +146,7 @@ function Contact() {
                 block: "start",
               });
             }}
-            className="text-green-500 bg-black/30 font-semibold pl-11 pr-8 py-2 rounded-4xl border-y-2 border-green-500 relative cursor-pointer animate-[bounce_2s_infinite]"
+            className="text-green-500 bg-black/ dark:bg-black/20 font-semibold pl-11 pr-8 py-2 rounded-4xl border-y-2 border-green-500 relative cursor-pointer animate-[bounce_2s_infinite] "
           >
             Get in Touch
             <FiMessageCircle className="absolute top-3.5 left-4" />
@@ -202,7 +200,7 @@ function Contact() {
         {infoCards.map(({ Icon, green, rest, l1, l2 }) => (
           <div
             key={green}
-            className="min-h-50 border-y border-green-500 rounded-2xl shadow-2xl shadow-white/10 cursor-pointer transition-transform duration-300 ease-out hover:-translate-y-2 p-5"
+            className="min-h-50 border-y-2 dark:border-y border-green-500 rounded-2xl shadow-2xl shadow-white/10 cursor-pointer transition-transform duration-300 ease-out hover:-translate-y-2 p-5"
           >
             <Icon className="text-white/90 size-12" />
             <p className="text-white text-xl font-semibold mt-3">
@@ -293,12 +291,12 @@ function Contact() {
           {/* Social Section */}
           <div className="mt-10 flex flex-col items-center">
             <div className="flex w-full items-center gap-3">
-              <span className="h-0.5 flex-1 bg-white/10"></span>
+              <span className="connect-divider h-0.5 flex-1 bg-white/10"></span>
               <TfiWorld className="text-white size-5 shrink-0" />
               <p className="text-white text-xl sm:text-2xl font-semibold text-center">
                 Connect<span className="text-green-500"> With Us</span>
               </p>
-              <span className="h-0.5 flex-1 bg-white/10"></span>
+              <span className=" connect-divider h-0.5 flex-1 bg-black dark:bg-white/10"></span>
             </div>
 
             <div className="flex flex-wrap justify-center gap-5 mt-6">
@@ -308,7 +306,7 @@ function Contact() {
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="size-13 cursor-pointer rounded-full border border-white/20 flex items-center justify-center hover:bg-green-500 active:bg-green-500 shadow-2xl shadow-black/50"
+                  className="size-13 cursor-pointer  rounded-full border dark:border-white/20 flex items-center justify-center hover:bg-green-500 active:bg-green-500 shadow-2xl shadow-black/50"
                 >
                   <Icon className="text-white size-8" />
                 </a>
@@ -331,7 +329,7 @@ function Contact() {
               title="FinTrack Headquarters"
             ></iframe>
 
-            <p className="py-2 px-4 bg-gray-800 absolute bottom-0 left-0 w-full flex items-center gap-3">
+            <p className="py-2 px-4 bg-gray-300 dark:bg-gray-800 absolute bottom-0 left-0 w-full flex items-center gap-3">
               <FaRegBuilding className="size-6 shrink-0 text-gray-300" />
               <span className="text-gray-300 text-[17px] font-semibold">
                 <span className="text-green-500">FinTrack</span> Headquarters
@@ -340,7 +338,7 @@ function Contact() {
           </div>
 
           {/* FAQ */}
-          <div className="border-green-500 border-y-2 rounded-2xl shadow-2xl shadow-white/10 p-5 sm:p-6">
+          <div className="border-green-500 border-y-3 dark:border-y-2 rounded-2xl shadow-2xl shadow-white/10 p-5 sm:p-6">
             <p className="text-xl sm:text-[21px] text-white font-semibold">
               <span className="text-green-500">Frequently</span> Asked Questions
             </p>
@@ -355,7 +353,7 @@ function Contact() {
                   {f.answer}
                 </p>
                 {i < faqs.length - 1 && (
-                  <div className="h-0.5 w-full mt-5 bg-white/10"></div>
+                  <div className=" connect-divider h-0.5 w-full mt-5 bg-white/10"></div>
                 )}
               </div>
             ))}

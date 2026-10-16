@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
-import { FaUsers, FaUserEdit, FaTrash, FaEnvelope, FaSignInAlt, FaSignOutAlt, FaSearch,} from "react-icons/fa";
+import {
+  FaUsers,
+  FaUserEdit,
+  FaTrash,
+  FaEnvelope,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaSearch,
+} from "react-icons/fa";
 
 function Admin() {
   const [contactDate, setContactDate] = useState("");
@@ -184,8 +192,6 @@ function Admin() {
     return formatDate(date);
   }
 
-
-
   const filteredActivities = activities.filter((activity) => {
     const search = activitySearch.toLowerCase();
     const userName = activity.userId?.name?.toLowerCase() || "";
@@ -243,7 +249,7 @@ function Admin() {
   const iconBtn =
     "size-9 shrink-0 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center hover:bg-red-500 hover:text-white transition";
 
-  //  UI 
+  //  UI
   return (
     <div className="min-h-screen md:h-screen md:overflow-hidden bg-[#0F0F10] text-white flex flex-col md:flex-row pt-15 md:pt-0">
       {/* SIDEBAR (top bar on mobile, fixed side panel on md+) */}
@@ -303,14 +309,14 @@ function Admin() {
                 <div className="flex flex-col sm:flex-row sm:flex-wrap gap-10">
                   {/* Search */}
                   <div className="relative w-full sm:w-80">
-                    <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300" />
+                    <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-300" />
 
                     <input
                       type="text"
                       placeholder="Search name or email..."
                       value={activitySearch}
                       onChange={(e) => setActivitySearch(e.target.value)}
-                      className="w-full rounded-lg border border-white/10 bg-black/50 pl-10 pr-4 py-2 text-white outline-none focus:border-green-500 placeholder:text-gray-300"
+                      className="w-full rounded-lg border border-gray-300 bg-white pl-10 pr-4 py-2 text-black outline-none focus:border-green-500 placeholder:text-gray-500 dark:border-white/10 dark:bg-black/50 dark:text-white dark:placeholder:text-gray-300"
                     />
                   </div>
 
@@ -319,7 +325,7 @@ function Admin() {
                     type="date"
                     value={activityDate}
                     onChange={(e) => setActivityDate(e.target.value)}
-                    className={`${input} w-full sm:w-56 bg-black/50 text-white [color-scheme:dark]`}
+                    className={`${input} w-full sm:w-56 bg-black/50 text-white [color-scheme:dark] `}
                   />
 
                   {/* Filter */}
@@ -476,13 +482,14 @@ function Admin() {
                 </div>
 
                 <div className="relative w-full lg:w-80 mr-10">
-                  <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300" />
+                  <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-300" />
+
                   <input
                     type="text"
                     placeholder="Search name or email..."
                     value={userSearch}
                     onChange={(e) => setUserSearch(e.target.value)}
-                    className="bg-black/50 border border-white/10 rounded-lg pl-10 pr-4 py-2 w-full outline-none focus:border-green-500 placeholder:text-gray-300"
+                    className="bg-white text-black border border-gray-300 rounded-lg pl-10 pr-4 py-2 w-full outline-none focus:border-green-500 placeholder:text-gray-500 dark:bg-black/50 dark:text-white dark:border-white/10 dark:placeholder:text-gray-300"
                   />
                 </div>
               </div>
@@ -773,6 +780,3 @@ function Admin() {
 }
 
 export default Admin;
-
-
-
