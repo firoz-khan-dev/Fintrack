@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    @apply bg-white text-gray-900 transition-colors duration-300;
+    @apply dark:bg-[#0F0F10] dark:text-white;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: white !important;
+  caret-color: white;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+@theme {
+  --animate-spin-scale: spinScale 3s ease-in-out infinite;
+}
+
+@keyframes spinScale {
+  0%,
+  75% {
+    transform: rotateX(0deg) scale(1);
+  }
+  85% {
+    transform: rotateX(120deg) scale(1.1);
+  }
+  92% {
+    transform: rotateX(240deg) scale(1.2);
+  }
+  98% {
+    transform: rotateX(360deg) scale(1.15);
+  }
+  100% {
+    transform: rotateX(360deg) scale(1);
+  }
+}
+
+@theme {
+  --animate-money-fall: moneyFall linear infinite;
+}
+
+@keyframes moneyFall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes popLoop {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+.animate-pop-loop {
+  animation: popLoop 3s ease-in-out infinite;
+}
+
+@keyframes pointNudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+.animate-point-nudge {
+  animation: pointNudge 1.5s ease-in-out infinite;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+@keyframes pendulum {
+  0% {
+    transform: rotate(6deg);
+  }
+  50% {
+    transform: rotate(-6deg);
+  }
+  100% {
+    transform: rotate(6deg);
+  }
+}
+
+@keyframes pendulum {
+  0%,
+  100% {
+    transform: rotate(var(--swing));
+  }
+  50% {
+    transform: rotate(calc(var(--swing) * -1));
+  }
+}
+
+/* Add this to your index.css */
+
+@keyframes pendulum {
+  0%,
+  100% {
+    transform: rotate(var(--swing));
+  }
+  50% {
+    transform: rotate(calc(var(--swing) * -1));
+  }
+}
+
+.pendulum {
+  --swing: 2deg; /* phones: gentle swing */
+  transform-origin: top center;
+  animation: pendulum 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .pendulum {
+    --swing: 4deg;
+  }
+}
+@media (min-width: 1024px) {
+  .pendulum {
+    --swing: 6deg;
+  }
+}
+
+/* mouse devices: pause on hover */
+@media (hover: hover) {
+  .pendulum:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* touch devices: pause while pressed */
+.pendulum:active {
+  animation-play-state: paused;
+}
+
+/* respect "reduce motion" setting */
+@media (prefers-reduced-motion: reduce) {
+  .pendulum {
+    animation: none;
+  }
+}
