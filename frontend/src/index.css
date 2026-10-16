@@ -160,3 +160,93 @@ body {
     animation: none;
   }
 }
+
+
+/* FinTrack global light theme overrides */
+/* The app already uses dark utility classes in many pages. These scoped
+   overrides make those existing surfaces readable in light mode without
+   changing each component or touching application logic. */
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+html[data-theme="light"] body {
+  background-color: #f3f6fb !important;
+  color: #111827 !important;
+}
+
+/* Main dark surfaces, cards, and panels */
+html[data-theme="light"] [class~="bg-black"],
+html[data-theme="light"] [class~="bg-black/90"],
+html[data-theme="light"] [class~="bg-black/80"],
+html[data-theme="light"] [class~="bg-[#0F0F10]"],
+html[data-theme="light"] [class~="bg-[#0f0f10]"],
+html[data-theme="light"] [class~="bg-[#101012]"],
+html[data-theme="light"] [class~="bg-[#151517]"],
+html[data-theme="light"] [class~="bg-[#1f1f23]"],
+html[data-theme="light"] [class~="bg-[#202023]"],
+html[data-theme="light"] [class~="bg-[#111113]"],
+html[data-theme="light"] [class~="bg-white/4"],
+html[data-theme="light"] [class~="bg-white/[0.03]"],
+html[data-theme="light"] [class~="bg-white/[0.04]"],
+html[data-theme="light"] [class~="bg-white/10"] {
+  background-color: #ffffff !important;
+}
+
+/* Dark gradient backgrounds become a soft light canvas */
+html[data-theme="light"] [class*="linear-gradient(160deg"],
+html[data-theme="light"] [class*="linear-gradient(135deg"] {
+  background-image: none !important;
+  background-color: #f3f6fb !important;
+}
+
+/* Dark-mode text colors used throughout dashboard, forms, and navigation */
+html[data-theme="light"] [class~="text-white"],
+html[data-theme="light"] [class~="text-white/90"],
+html[data-theme="light"] [class~="text-white/80"],
+html[data-theme="light"] [class~="text-white/70"] {
+  color: #111827 !important;
+}
+
+html[data-theme="light"] [class~="text-gray-100"],
+html[data-theme="light"] [class~="text-gray-200"] {
+  color: #1f2937 !important;
+}
+
+html[data-theme="light"] [class~="text-gray-300"],
+html[data-theme="light"] [class~="text-gray-400"] {
+  color: #4b5563 !important;
+}
+
+/* Keep outlines visible on light cards and filters */
+html[data-theme="light"] [class~="border-white"],
+html[data-theme="light"] [class~="border-white/10"],
+html[data-theme="light"] [class~="border-white/5"] {
+  border-color: #d1d5db !important;
+}
+
+html[data-theme="light"] input,
+html[data-theme="light"] select,
+html[data-theme="light"] textarea {
+  color-scheme: light;
+}
+
+html[data-theme="light"] input::placeholder,
+html[data-theme="light"] textarea::placeholder {
+  color: #6b7280;
+}
+
+/* Recharts axis labels and tooltip remain readable after switching themes */
+html[data-theme="light"] .recharts-cartesian-axis-tick-value {
+  fill: #4b5563 !important;
+}
+
+html[data-theme="light"] .recharts-default-tooltip {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+  color: #111827 !important;
+}
+
+html[data-theme="light"] .recharts-legend-item-text {
+  color: #374151 !important;
+}
