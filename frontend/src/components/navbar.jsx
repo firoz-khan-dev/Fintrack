@@ -40,13 +40,16 @@ function Navbar() {
     audio.play();
   }
 
-  const isActive = (to) => location.pathname === to;
+  const normalizePath = (path) => path.replace(/\/+$/, "") || "/";
+
+  const isActive = (to) =>
+    normalizePath(location.pathname) === normalizePath(to);
   const authActive =
     location.pathname === "/login" || location.pathname === "/register";
 
   // same look as the original nav links
   const linkClass = (to) =>
-    `rounded-3xl border-y-2 px-4 py-2 text-base font-medium text-white hover:bg-white/5 hover:text-white/90 ${
+    `inline-flex items-center rounded-3xl border-2 px-4 py-2 text-base font-medium text-white transition-all hover:bg-white/5 hover:text-white/90 ${
       isActive(to) ? "border-red-600" : "border-transparent"
     }`;
 
