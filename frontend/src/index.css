@@ -119,6 +119,11 @@ html[data-theme="light"] .recharts-legend-item-text {
 }
 
 
+/* Divider in light mode */
+html[data-theme="light"] .connect-divider {
+  background-color: #d1d5db !important;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -127,18 +132,6 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: white !important;
   caret-color: white;
   transition: background-color 9999s ease-in-out 0s;
-}
-
-html[data-theme="light"] .light-keep-white {
-  color: #ffffff !important;
-}
-
-html[data-theme="light"] .light-keep-fade {
-  color: #D1D5DB !important;
-}
-
-html[data-theme="light"] .connect-divider {
-  background-color: #000000 !important;
 }
 
 @theme {

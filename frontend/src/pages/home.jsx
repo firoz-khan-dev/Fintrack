@@ -63,10 +63,10 @@ function Home() {
               <div className="w-full cursor-pointer rounded-3xl border-y-2 border-red-500 bg-[#161619] p-4 shadow-2xl shadow-green-500/10 sm:p-6 lg:min-h-100">
                 <div className="flex items-center justify-between gap-3">
                   <div>
-                    <p className="text-lg text-gray-300 sm:text-[20px] light-keep-white ">
+                    <p className="text-lg dark:text-gray-300 sm:text-[20px] !text-white">
                       Total Balance
                     </p>
-                    <h2 className="mt-2 text-3xl font-bold sm:text-4xl light-keep-white">
+                    <h2 className="mt-2 text-3xl font-bold sm:text-4xl  !text-white">
                       ₹52,450
                     </h2>
                   </div>
@@ -79,14 +79,14 @@ function Home() {
                 {/* Income / Expenses */}
                 <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-4">
                   <div className="rounded-xl border border-white/10 bg-black/60 p-3 sm:p-4">
-                    <p className="text-sm text-gray-300 light-keep-white">Income</p>
-                    <p className="mt-2 text-lg font-semibold text-green-500 sm:text-2xl">
+                    <p className="text-sm dark:text-gray-300 light-keep-white !text-white">Income</p>
+                    <p className="mt-2 text-lg font-semibold text-green-500 sm:text-2xl ">
                       ₹75,000
                     </p>
                   </div>
 
                   <div className="rounded-xl border border-white/10 bg-black/60 p-3 sm:p-4">
-                    <p className="text-sm text-gray-300 light-keep-white">Expenses</p>
+                    <p className="text-sm darK:text-gray-300 light-keep-white !text-white">Expenses</p>
                     <p className="mt-2 text-lg font-semibold text-red-400 sm:text-2xl">
                       ₹22,550
                     </p>
@@ -148,10 +148,10 @@ function Home() {
             <div className="flex size-14 items-center justify-center rounded-xl bg-green-500/10">
               <MdAddChart className="size-10 text-green-500" />
             </div>
-            <h3 className="mt-3 text-xl font-semibold sm:text-[22px] light-keep-white">
+            <h3 className="mt-3 text-xl font-semibold sm:text-[22px] !text-white">
               Easy Tracking
             </h3>
-            <p className="mt-3 leading-6 text-gray-300 light-keep-fade">
+            <p className="mt-3 leading-6 !text-gray-300 ">
               Add your income and expenses quickly and keep your financial
               records organized.
             </p>
@@ -161,10 +161,10 @@ function Home() {
             <div className="flex size-14 items-center justify-center rounded-xl bg-green-500/10">
               <FaChartPie className="size-10 text-green-500" />
             </div>
-            <h3 className="mt-3 text-xl font-semibold sm:text-[22px] light-keep-white">
+            <h3 className="mt-3 text-xl font-semibold sm:text-[22px] !text-white">
               Understand Your Spending
             </h3>
-            <p className="mt-3 leading-6 text-gray-300 light-keep-fade">
+            <p className="mt-3 leading-6 !text-gray-300 light-keep-fade">
               View your financial activity and understand where your money is
               being spent.
             </p>
@@ -174,10 +174,10 @@ function Home() {
             <div className="flex size-14 items-center justify-center rounded-xl bg-green-500/10">
               <FaShieldHalved className="size-10 text-green-500" />
             </div>
-            <h3 className="mt-3 text-xl font-semibold sm:text-[22px] light-keep-white">
+            <h3 className="mt-3 text-xl font-semibold sm:text-[22px] !text-white">
               Simple & Secure
             </h3>
-            <p className="mt-3 leading-6 text-gray-300 light-keep-fade">
+            <p className="mt-3 leading-6 !text-gray-300 light-keep-fade">
               Keep your financial information organized with a simple and secure
               experience.
             </p>
@@ -255,7 +255,7 @@ function Home() {
       <footer className="border-t border-white/10 bg-[#0a0a0a] py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 text-center sm:flex-row sm:justify-between sm:px-8 sm:text-left">
           <div>
-            <h2 className="text-2xl font-bold light-keep-fade">
+            <h2 className="text-2xl font-bold !text-white">
               <span className="text-green-500">Fin</span>Track
             </h2>
             <p className="mt-1 text-sm text-gray-500">

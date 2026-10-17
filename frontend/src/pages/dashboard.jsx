@@ -284,12 +284,12 @@ function DashBoard() {
   const Balance = totalIncome - totalExpense;
 
   // income + category + saving chart
-  const financialChartData = chartData.map((item) => ({
-    category: item.category,
-    income: monthlyIncomeTotal,
-    expense: item.amount,
-    saving: monthlyIncomeTotal - item.amount,
-  }));
+ const financialChartData = chartData.map((item) => ({
+  category: item.category,
+  income: monthlyIncomeTotal,
+  expense: item.amount,
+  saving: Math.abs(monthlyIncomeTotal - item.amount),
+}));
 
   // ANIMATED NUMBERS
   const animatedIncome = useCountUp(totalIncome, 1000);

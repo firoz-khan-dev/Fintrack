@@ -291,12 +291,12 @@ function Contact() {
           {/* Social Section */}
           <div className="mt-10 flex flex-col items-center">
             <div className="flex w-full items-center gap-3">
-              <span className="connect-divider h-0.5 flex-1 bg-white/10"></span>
+              <span className="connect-divider h-0.5 flex-1  bg-gray-300"></span>
               <TfiWorld className="text-white size-5 shrink-0" />
               <p className="text-white text-xl sm:text-2xl font-semibold text-center">
                 Connect<span className="text-green-500"> With Us</span>
               </p>
-              <span className=" connect-divider h-0.5 flex-1 bg-black dark:bg-white/10"></span>
+              <span className=" text-black h-0.5 flex-1  bg-gray-300"></span>
             </div>
 
             <div className="flex flex-wrap justify-center gap-5 mt-6">
@@ -353,7 +353,7 @@ function Contact() {
                   {f.answer}
                 </p>
                 {i < faqs.length - 1 && (
-                  <div className=" connect-divider h-0.5 w-full mt-5 bg-white/10"></div>
+                  <div className=" connect-divider h-0.5 w-full mt-5 bg-gray-300"></div>
                 )}
               </div>
             ))}
