@@ -1,5 +1,4 @@
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import Img from "../assets/logo.png";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import FinTrackLogo from "./FinTrackLogo";
 import { useState } from "react";
 import ClickSound from "../assets/click.mp3";
@@ -40,17 +39,13 @@ function Navbar() {
     audio.play();
   }
 
-  const normalizePath = (path) => path.replace(/\/+$/, "") || "/";
-
-  const isActive = (to) =>
-    normalizePath(location.pathname) === normalizePath(to);
   const authActive =
     location.pathname === "/login" || location.pathname === "/register";
 
   // same look as the original nav links
-  const linkClass = (to) =>
+  const linkClass = (active) =>
     `inline-flex items-center rounded-3xl border-2 px-4 py-2 text-base font-medium text-white transition-all hover:bg-white/5 hover:text-white/90 ${
-      isActive(to) ? "border-red-600" : "border-transparent"
+      active ? "border-red-600" : "border-transparent"
     }`;
 
   const logoutBtn = (
@@ -96,11 +91,18 @@ function Navbar() {
           <ul className="flex items-center gap-4 lg:gap-8">
             {links.map((l) => (
               <li key={l.to}>
-                <Link to={l.to} className={linkClass(l.to)}>
+                <NavLink
+                  to={l.to}
+                  end
+                  className={({ isActive: active }) => linkClass(active)}
+                  style={({ isActive: active }) => ({
+                    borderColor: active ? "#dc2626" : "transparent",
+                  })}
+                >
                   <span className="inline-block hover:scale-105">
                     {l.label}
                   </span>
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>
@@ -149,13 +151,19 @@ function Navbar() {
           <ul className="flex flex-col gap-2">
             {links.map((l) => (
               <li key={l.to}>
-                <Link
+                <NavLink
                   to={l.to}
+                  end
                   onClick={() => setMenuOpen(false)}
-                  className={`block text-center ${linkClass(l.to)}`}
+                  className={({ isActive: active }) =>
+                    `block text-center ${linkClass(active)}`
+                  }
+                  style={({ isActive: active }) => ({
+                    borderColor: active ? "#dc2626" : "transparent",
+                  })}
                 >
                   {l.label}
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>
