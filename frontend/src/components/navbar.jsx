@@ -35,7 +35,7 @@ function Navbar() {
     location.pathname === "/login" || location.pathname === "/register";
 
   const linkClass = (active) =>
-    `inline-flex items-center rounded-3xl border-2 px-4 py-2 text-base font-medium text-white transition-all hover:bg-white/5 hover:text-white/90 ${
+    `inline-flex items-center rounded-3xl border-y-2 px-4 py-2 text-base font-medium text-white transition-all hover:bg-white/5 hover:text-white/90 ${
       active ? "border-red-600" : "border-transparent"
     }`;
 

@@ -21,21 +21,40 @@ api.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 // RESPONSE INTERCEPTOR
+
+// RESPONSE INTERCEPTOR
 api.interceptors.response.use(
-  (response) => {
-    return response;
-  },
+  (response) => response,
 
   async (error) => {
     const originalRequest = error.config;
+    const url = originalRequest?.url || "";
 
-    // Access token expired
+    // In authentication requests, 401 should be handled by the page.
+    const isAuthRequest =
+      url.includes("/auth/login") ||
+      url.includes("/auth/register") ||
+      url.includes("/auth/send-otp") ||
+      url.includes("/auth/verify-otp") ||
+      url.includes("/auth/forgot-password") ||
+      url.includes("/auth/forgotPassword") ||
+      url.includes("/auth/reset-password") ||
+      url.includes("/auth/verify-reset-otp") ||
+      url.includes("/auth/refresh");
+
+    // Do not refresh tokens for login failures or auth endpoints.
+    if (isAuthRequest) {
+      return Promise.reject(error);
+    }
+
+    // Refresh only when a protected API request returns 401.
     if (
       error.response?.status === 401 &&
+      originalRequest &&
       !originalRequest._retry
     ) {
       originalRequest._retry = true;
@@ -44,30 +63,35 @@ api.interceptors.response.use(
         const refreshToken = localStorage.getItem("refreshToken");
 
         if (!refreshToken) {
-          localStorage.clear();
+          localStorage.removeItem("accessToken");
+          localStorage.removeItem("refreshToken");
+          localStorage.removeItem("role");
+          localStorage.removeItem("name");
+
           window.location.href = "/login";
           return Promise.reject(error);
         }
 
-        // Refresh access token
         const response = await api.post("/auth/refresh", {
           refreshToken,
         });
 
         const newAccessToken = response.data.accessToken;
 
-        // Save new access token
         localStorage.setItem("accessToken", newAccessToken);
 
-        // New token request me lagao
+        originalRequest.headers = originalRequest.headers || {};
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
 
-        // Original request dobara bhejo
         return api(originalRequest);
       } catch (refreshError) {
         console.log("Refresh token error:", refreshError);
 
-        localStorage.clear();
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        localStorage.removeItem("role");
+        localStorage.removeItem("name");
+
         window.location.href = "/login";
 
         return Promise.reject(refreshError);
@@ -75,7 +99,7 @@ api.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 export default api;
