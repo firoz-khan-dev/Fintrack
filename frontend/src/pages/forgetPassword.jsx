@@ -191,7 +191,7 @@ function ForgotPassword() {
               className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                 step >= 1
                   ? "border-green-500 border-y-2 text-white font-bold"
-                  : "bg-gray-700 text-gray-300"
+                  : "bg-gray-700 !text-white"
               }`}
             >
               1
@@ -207,7 +207,7 @@ function ForgotPassword() {
               className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                 step >= 2
                   ? "border-green-500 border-y-2 text-white font-bold"
-                  : "bg-gray-700 text-gray-300"
+                  : "bg-gray-700 !text-white"
               }`}
             >
               2
@@ -223,7 +223,7 @@ function ForgotPassword() {
               className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                 step >= 3
                   ? "border-green-500 border-y-2 text-white font-bold"
-                  : "bg-gray-700 text-gray-300"
+                  : "bg-gray-700 !text-white"
               }`}
             >
               3
