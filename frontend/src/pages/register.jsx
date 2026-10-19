@@ -38,17 +38,16 @@ function Register() {
     }));
   }
 
- 
   // Resend OTP Timer
-useEffect(() => {
-  if (resendTimer <= 0) return;
+  useEffect(() => {
+    if (resendTimer <= 0) return;
 
-  const timer = setInterval(() => {
-    setResendTimer((prev) => prev - 1);
-  }, 1000);
+    const timer = setInterval(() => {
+      setResendTimer((prev) => prev - 1);
+    }, 1000);
 
-  return () => clearInterval(timer);
-}, [resendTimer]);
+    return () => clearInterval(timer);
+  }, [resendTimer]);
 
   // Send OTP
   async function handleSendOtp(e) {
@@ -88,9 +87,16 @@ useEffect(() => {
 
       setSuccess(response.data.message || "OTP sent successfully");
     } catch (error) {
-      console.log(error);
+      console.error("Resend OTP failed:", {
+        status: error.response?.status,
+        response: error.response?.data,
+        message: error.message,
+      });
 
-      setError(error.response?.data?.message || "Failed to send OTP");
+      setError(
+        error.response?.data?.message ||
+          "Failed to resend OTP. Please try again.",
+      );
     } finally {
       setLoading(false);
     }

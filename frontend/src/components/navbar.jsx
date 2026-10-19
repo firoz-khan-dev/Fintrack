@@ -8,20 +8,36 @@ import profile from "../assets/profile.png";
 import api from "../services/api";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-const links = [
-  { to: "/", label: "Home" },
-  { to: "/dashboard", label: "Dashboard" },
-  { to: "/contact", label: "Contact" },
-];
-
 function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
+
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const name = useSelector((state) => state.auth.name);
+  const role = useSelector((state) => state.auth.role);
 
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // User and admin have different protected routes.
+  const dashboardLink =
+    isAuthenticated && role === "admin"
+      ? { to: "/admin", label: "Admin Panel" }
+      : { to: "/dashboard", label: "Dashboard" };
+
+  const links = [
+    { to: "/", label: "Home" },
+    dashboardLink,
+    { to: "/contact", label: "Contact" },
+  ];
+
+  const authActive =
+    location.pathname === "/login" || location.pathname === "/register";
+
+  const linkClass = (active) =>
+    `inline-flex items-center rounded-3xl border-2 px-4 py-2 text-base font-medium text-white transition-all hover:bg-white/5 hover:text-white/90 ${
+      active ? "border-red-600" : "border-transparent"
+    }`;
 
   async function handleLogOut() {
     try {
@@ -29,6 +45,7 @@ function Navbar() {
     } catch (error) {
       console.log("Logout activity error:", error);
     }
+
     dispatch(logout());
     setMenuOpen(false);
     navigate("/login");
@@ -36,20 +53,14 @@ function Navbar() {
 
   function handleClick() {
     const audio = new Audio(ClickSound);
-    audio.play();
+    audio.play().catch((error) => {
+      console.log("Click sound error:", error);
+    });
   }
-
-  const authActive =
-    location.pathname === "/login" || location.pathname === "/register";
-
-  // same look as the original nav links
-  const linkClass = (active) =>
-    `inline-flex items-center rounded-3xl border-2 px-4 py-2 text-base font-medium text-white transition-all hover:bg-white/5 hover:text-white/90 ${
-      active ? "border-red-600" : "border-transparent"
-    }`;
 
   const logoutBtn = (
     <button
+      type="button"
       onClick={() => {
         handleLogOut();
         handleClick();
@@ -65,45 +76,56 @@ function Navbar() {
   const userBadge = (
     <span className="flex items-center font-medium text-white hover:text-white/90">
       <span className="mr-2 flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full border-x-2 border-red-500">
-        <img src={profile} alt="" className="h-full w-full object-cover" />
+        <img
+          src={profile}
+          alt="Profile"
+          className="h-full w-full object-cover"
+        />
       </span>
       <span className="max-w-[10rem] truncate">{name}</span>
     </span>
   );
 
+  // Shared desktop and mobile navigation links.
+  const renderNavLink = (link, mobile = false) => (
+    <NavLink
+      key={link.to}
+      to={link.to}
+      end
+      onClick={() => {
+        if (mobile) setMenuOpen(false);
+      }}
+      className={({ isActive }) =>
+        `${linkClass(isActive)} ${mobile ? "block justify-center text-center" : ""}`
+      }
+      style={({ isActive }) => ({
+        borderColor: isActive ? "#dc2626" : "transparent",
+      })}
+    >
+      <span className="inline-block hover:scale-105">{link.label}</span>
+    </NavLink>
+  );
+
   return (
     <header className="fixed left-0 top-0 z-40 w-full border-2 border-green-600 bg-black">
-      {/* BAR: fixed 60px total height (matches pt-15 / top-15 on the pages) */}
       <div className="flex h-14 items-center justify-between gap-2 px-2 sm:px-4">
-        {/* LEFT: logo + user (user shows from lg, same as original) */}
+        {/* Logo and profile */}
         <div className="flex min-w-0 items-center gap-6">
           <FinTrackLogo
             onClick={() => navigate("/")}
             className="h-9 cursor-pointer text-white sm:h-13"
           />
+
           {isAuthenticated && (
             <div className="hidden lg:block">{userBadge}</div>
           )}
         </div>
 
-        {/* RIGHT (desktop): links + logout / register-login */}
+        {/* Desktop menu */}
         <div className="hidden items-center gap-4 md:flex lg:gap-8">
           <ul className="flex items-center gap-4 lg:gap-8">
-            {links.map((l) => (
-              <li key={l.to}>
-                <NavLink
-                  to={l.to}
-                  end
-                  className={({ isActive: active }) => linkClass(active)}
-                  style={({ isActive: active }) => ({
-                    borderColor: active ? "#dc2626" : "transparent",
-                  })}
-                >
-                  <span className="inline-block hover:scale-105">
-                    {l.label}
-                  </span>
-                </NavLink>
-              </li>
+            {links.map((link) => (
+              <li key={link.to}>{renderNavLink(link)}</li>
             ))}
           </ul>
 
@@ -134,9 +156,10 @@ function Navbar() {
           )}
         </div>
 
-        {/* MOBILE: hamburger */}
+        {/* Mobile menu button */}
         <button
-          onClick={() => setMenuOpen((o) => !o)}
+          type="button"
+          onClick={() => setMenuOpen((previous) => !previous)}
           className="flex size-10 shrink-0 items-center justify-center rounded-lg text-white hover:bg-white/10 md:hidden"
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
@@ -145,26 +168,12 @@ function Navbar() {
         </button>
       </div>
 
-      {/* MOBILE MENU */}
+      {/* Mobile menu */}
       {menuOpen && (
         <div className="border-t border-white/10 bg-black px-4 pb-4 pt-3 md:hidden">
           <ul className="flex flex-col gap-2">
-            {links.map((l) => (
-              <li key={l.to}>
-                <NavLink
-                  to={l.to}
-                  end
-                  onClick={() => setMenuOpen(false)}
-                  className={({ isActive: active }) =>
-                    `block text-center ${linkClass(active)}`
-                  }
-                  style={({ isActive: active }) => ({
-                    borderColor: active ? "#dc2626" : "transparent",
-                  })}
-                >
-                  {l.label}
-                </NavLink>
-              </li>
+            {links.map((link) => (
+              <li key={link.to}>{renderNavLink(link, true)}</li>
             ))}
           </ul>
 
@@ -179,10 +188,11 @@ function Navbar() {
                 <Link
                   to="/register"
                   onClick={() => setMenuOpen(false)}
-                  className="flex-1 rounded-full border-y-2 border-red-600 py-2 text-center font-bold text-white hover:bg-white/5 "
+                  className="flex-1 rounded-full border-y-2 border-red-600 py-2 text-center font-bold text-white hover:bg-white/5"
                 >
                   Register
                 </Link>
+
                 <Link
                   to="/login"
                   onClick={() => setMenuOpen(false)}
